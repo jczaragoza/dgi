@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="content">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div>
+                    <h2 class="text-white pb-2 fw-bold">Actualizar Información</h2>
+                    
+                </div>
+                <div class="ml-md-auto py-2 py-md-0">
+                    
+                    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-danger btn-round">Atras</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-card-no-pd">
+
+        <div class="col-md-12">
+            <div class="card">
+                <form enctype="multipart/form-data" method="post" id="cursoForm">
+                    {% csrf_token %}
+                    <div class="form-row form-row"> 
+                        <div class="form-group col-md-6 mb-0"> 
+                            <div id="div_id_persona" class="form-group"> 
+                                <label for="id_persona" class="">
+                                    Persona
+                                </label> 
+                                <div class=""> 
+                                    <input type="text" list="showcurso" Placeholder="Buscar nombre..." class="form-control" name="persona">
+                                    <datalist id="showcurso">
+                                        {% for results in showcurso %}
+                                            <option value="{{results.nombre}} {{results.apaterno}} {{results.amaterno}}">
+                                        {% endfor %}
+                                    </datalist>  
+                                </div> 
+                            </div> 
+                        </div> 
+                        <div class="form-group col-md-6 mb-0"> 
+                            <div id="div_id_tipo_curso" class="form-group"> 
+                                <label for="id_tipo_curso" class="">
+                                    Tipo de Curso
+                                </label> 
+                                <div class=""> 
+                                    <select name="tipo_curso" class="select form-control custom-select" id="id_tipo_curso"> 
+                                        <option value="Diplomado">Diplomado</option> 
+                                        <option value="Taller">Taller</option> 
+                                        <option value="Curso">Curso</option> 
+                                        <option value="Capacitación">Capacitación</option>
+                                    </select> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div>
+                    <div class="form-row form-row"> 
+                        <div class="form-group col-md-12 mb-0"> 
+                            <div id="div_id_nombre" class="form-group"> 
+                                <label for="id_nombre" class="">
+                                    Nombre de Curso
+                                </label> 
+                                <div class=""> 
+                                    <input type="text" name="nombre" class="textinput textInput form-control" id="id_nombre"> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div>
+                    <div class="form-row form-row"> 
+                        <div class="form-group col-md-6 mb-0"> 
+                            <div id="div_id_inicio_curso" class="form-group"> 
+                                <label for="id_inicio_curso" class="">
+                                    Inicio de curso
+                                </label> 
+                            <div class=""> 
+                                <input type="date" name="inicio_curso" class="form-control datetimepicker textinput textInput form-control" id="id_inicio_curso"> </div> 
+                            </div> 
+                        </div> 
+                        <div class="form-group col-md-6 mb-0"> 
+                            <div id="div_id_fin_curso" class="form-group"> 
+                                <label for="id_fin_curso" class="">
+                                    Fin de Curso
+                                </label> 
+                                <div class=""> 
+                                    <input type="date" name="fin_curso" class="form-control  datetimepicker textinput textInput form-control" id="id_fin_curso"> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div>
+                    <div class="form-row form-row"> 
+                        <div class="form-group col-md-6 mb-0">
+                            <div id="div_id_documento" class="form-group"> 
+                                <label for="id_documento" class="">
+                                    Documento Obtenido
+                                </label> 
+                                <div class=""> 
+                                    <select name="documento" class="select form-control custom-select" id="id_documento"> 
+                                        <option value="Diploma">Diploma</option> 
+                                        <option value="Constancia">Constancia</option> 
+                                        <option value="Certificado">Certificado</option>
+                                    </select> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div>
+                    <input type="submit" name="submit" value="Guardar" class="btn btn-primary btn btn-secondary btn-round" id="submit-id-submit">
+                    <input type="submit" name="cancel" value="Cancelar" class="btn btn-primary btn btn-danger btn-round" id="submit-id-cancel"> 
+                </form>                              
+            </div>
+        </div>
+    </div>
+</div>
+        
+{% endblock %}
+
+
+

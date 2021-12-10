@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block container %}
+    <h5 class="mb-4 mt-1 ml-1 text-primary">Eliminar registro</h5>
+    <form method="post">{% csrf_token %}
+        <p>Seguro que deseas eliminar a {{ object }} ?</p>
+        <input type="submit" value="Aceptar" class="btn btn-primary"> &nbsp;
+        
+        <a href="{% url 'persona_list' %}" class="btn btn-danger">Cancelar</a>
+    </form>
+{% endblock %}

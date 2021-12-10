@@ -1,0 +1,135 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>KARDEX</title>
+  
+    </head>
+    <body>
+    <div class="container bg-light bg-gradient rounded">
+        <div class="row">
+            <div class="col md-1">
+                <img src="{% static "img/Escudopolicia.png" %}" style="width: 100px; height: 100px;" class="rounded"/>
+            </div>
+            <div class="col md-10 mt-3">
+                <h6 class="text-center">{{ persona.unidad_administrativa }}</h6>
+                <p class="text-center">{{ persona.adscripcion}}</p>
+            </div>
+            <div class="col md-1">
+                <h5 class="ml-5 mt-5 text-dark text-right" > ID {{ persona.id }} </h5>
+            </div>
+        </div>
+        <div class="row rounded" style="background-color: rgb(9, 20, 70);">
+            <div class="col md-12">
+                <h5 class="ml-5 mt-2 text-white text-center" > KARDEX PERSONAL </h5>
+            </div>
+        </div>
+        <div class="row rounded" style="background-color: rgb(217, 222, 241);">
+            <div class="col md-6 mt-4 ml-5">
+                {% if persona.foto %}
+                    <img src=" {{ persona.foto.url }}" alt="{{persona.nombre}}" class=" rounded border border-secondary img-fluid" style="width: 225px; height: 250px" />
+                {% else %}
+                    <img src="{% static "img/user1.png" %}" class=" rounded border border-secondary img-fluid" style="width: 225px; height: 250px" />
+                {% endif %}
+                
+            </div>
+            <div class="col md-6  text-dark text-left">
+                <br>
+                <h5><strong>Nombre: {{ persona.apaterno }} {{ persona.amaterno }} {{ persona.nombre }} </strong> </h5>
+                <h6><strong> Clave de Servidor Público: {{ persona.clavesp}}</strong></h6>
+                <h6><strong> Edad: {{ persona.edad}} años</strong></h6>
+                <h6><strong>RFC: {{persona.rfc}} </strong></h6>
+                <h6><strong>Fecha de Alta: </strong> {{ persona.fecha_alta }}</h6>
+                <h6><strong>Estatus: </strong> {{ persona.estatus }}</h6>
+                <h6><strong>CUIP: </strong>{{ persona.cuip }}</h6>
+                <h6><strong>CURP: </strong>{{ persona.curp }}</h6>
+                <h6><strong>Clave de Servidor Público: </strong>{{ persona.clavesp }}</h6>
+                <br>
+            </div>    
+        </div>
+        <div class="row rounded" style="background-color: rgb(9, 20, 70);">
+            <div class="col md-6">
+                <h5 class="mt-2 text-white text-center" > Adscripción Física </h5>
+            </div>
+            <div class="col md-6">
+                <h5 class="mt-2 text-white text-center" > Puesto </h5>
+            </div>
+        </div>
+        <div class="row rounded" style="background-color: rgb(217, 222, 241);">
+            <div class="col md-7 ml-5">
+                <br>
+                <li><strong>Unidad Administrativa: </strong>{{ persona.unidad_administrativa }}</li>
+                <li><strong>Adscripción: </strong>{{ persona.adscripcion }}</li>
+                <li><strong>Dirección: </strong> {{ persona.direccion }}</li>
+                <li><strong>Subdirección: </strong> {{ persona.subdireccion }}</li>
+                <li><strong>Departamento: </strong> {{persona.departamento}}</li>
+                <br>
+            </div>
+            <div class="col md-5 ml-5">
+                <br>
+                <li><strong>Número de Plaza: </strong>{{ persona.num_plaza }}</li>
+                <li><strong>Puesto: </strong>{{ persona.puesto }}</li>
+                <li><strong>Código de Puesto: </strong>{{ persona.puesto.codigo_puesto }}</li>
+                <li><strong>Nivel Y Rango: </strong>{{ persona.puesto.nivel_rango }}</li>
+                <li><strong>Sueldo Bruto: </strong>{{ persona.puesto.sueldo_bruto }}</li>
+                <li><strong>Sueldo Neto: </strong>{{ persona.puesto.sueldo_neto }}</li>
+                <br>
+            </div>
+        </div>
+        <div class="row rounded" style="background-color: rgb(9, 20, 70);">
+            <div class="col md-6">
+                <h5 class="mt-2 text-white text-center" > Domicilio </h5>
+            </div>
+            <div class="col md-6">
+                <h5 class="mt-2 text-white text-center" > Contacto </h5>
+            </div>
+        </div>
+        <div class="row rounded" style="background-color: rgb(217, 222, 241);">
+            <div class="col md-6 ml-5">
+                <br>
+                <li><strong>Calle </strong> {{persona.calle}}</li>
+                <li><strong>Número: </strong> {{ persona.interior }}</li>
+                <li><strong>Exterior: </strong> {{ persona.exterior }}</li>                
+                <li><strong>Colonia: </strong>{{ persona.colonia }}</li>
+                <li><strong>Municipio: </strong>{{ persona.municipio }}</li>
+                <li><strong>Código Postal: </strong>{{ persona.cp }}</li>
+                <br>
+            </div>
+            <div class="col md-6 ml-5">
+                <br>
+                <li><strong>Correo Electrónico </strong> {{persona.correo}}</li>
+                <li><strong>Número Fijo: </strong> {{ persona.telefono_fijo }}</li>
+                <li><strong>Número Móvil: </strong> {{ persona.telefono_movil }}</li>                
+                <li><strong>Contacto Familiar: </strong>{{ persona.contacto_familiar }}</li>
+                <li><strong>ISSEMYM: </strong>{{ persona.nss }}</li>
+                <li><strong>Tipo de Sangre: </strong>{{ persona.tipo_sangre }}</li>
+                <li><strong>Escolaridad: </strong>{{ persona.escolaridad }}</li>
+                <br>
+            </div>
+        </div>
+        <div class="row rounded" style="background-color: rgb(9, 20, 70);">
+            <div class="col md-12">
+                <h5 class="mt-2 text-white text-center" > Cursos </h5>
+            </div>
+        </div>
+        
+        
+            <div class="row rounded" style="background-color: rgb(217, 222, 241);">
+                <div class="col md-12 ml-5">
+                    <br>
+                    {% for curso in cursos %}
+                    <li><strong>{{ curso.nombre}} duración: {{ curso.horas }} Horas</strong></li>
+                    {% endfor %}
+                    <br>
+                </div>
+            </div>
+        
+        <br>
+    </div>
+    </div>
+    </body>
+</html>
+
+

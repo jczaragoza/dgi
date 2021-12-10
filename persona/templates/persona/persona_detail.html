@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content%}
+
+<div class="content">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div>
+                    <h3 class="text-white pb-2 fw-bold">Kardex de {{persona.nombre}} {{persona.apaterno}} {{persona.amaterno}}</h3>
+                </div>
+                <div class="ml-md-auto py-2 py-md-0">
+                    <a href="{% url 'report' persona.pk %}" target="_blank" class="btn btn-secondary btn-round">Descargar PDF</a>
+                    <a href="{% url 'persona_update' persona.pk %}" class="btn btn-secondary btn-round">Actualizar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div style="background-color: rgb(9, 20, 70);">
+                        <div class="row align-items-center">
+                            <div class="col-md-2">
+                                <img src="{% static "img/Escudopolicia.png" %}" style="width: 80px; height: 80px;" />
+                            </div>
+                            <div class="col-md-8 text-center"><h5 class="ml-5 mt-1 text-white" >  </h5></div>
+                            <div class="col-md-2 text-center"><h5 class="ml-6 mt-1 text-white" >ID {{ persona.id }}</h5></div>
+                        </div>
+                    </div>
+                    <div style="background-color: rgb(217, 222, 241);">
+                        
+                        <div class="row align-items-center">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-3">
+                                {% if persona.foto %}
+                                <a href="{% url 'persona_update' persona.pk %}">
+                                    <img src=" {{ persona.foto.url }}" alt="{{persona.nombre}}" class=" rounded border border-secondary img-fluid " width="125px" height="150px" >
+                                </a>
+                                {% else %}
+                                    <img src="{% static "img/user1.png" %}" class=" rounded border border-secondary img-fluid" width="125px" height="150px"/>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6 text-left text-dark">
+                                <br>
+                                <h5><strong>Nombre: {{ persona.apaterno }} {{ persona.amaterno }} {{ persona.nombre }} </strong> </h5>
+                                <h6><strong> Puesto: {{ persona.puesto}}</strong></h6>
+                                <h6><strong> Clave de Servidor Público: {{ persona.clavesp}}</strong></h6>
+                                <h6><strong> Alta: {{ persona.fecha_alta}}</strong></h6>
+                                <h6><strong> Edad: {{ persona.edad}} años</strong></h6>
+                                <br>
+                            <div class="col-md-2"></div>
+                          </div>
+                          <br>
+                        </div>
+                    </div>
+
+                    <div style="background-color: rgb(9, 20, 70);">
+                        <div class="row">
+                            <div class="col-md-6 text-center"><h5 class="ml-5 mt-1 text-white" >Generales</h5></div>
+                            <div class="col-md-6 text-center"><h5 class="ml-5 mt-1 text-white" >Puesto</h5></div>
+                        </div>
+                    </div>
+                    <div style="background-color: rgb(217, 222, 241);">
+                        <br>
+                        <div class="row align-items-center">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5 text-left text-dark">
+                                <li><strong>RFC: </strong> {{persona.rfc}}</li>
+                                <li><strong>Fecha de Alta: </strong> {{ persona.fecha_alta }}</li>
+                                <li><strong>Estatus: </strong> {{ persona.estatus }}</li>
+                                <li><strong>CUIP: </strong>{{ persona.cuip }}</li>
+                                <li><strong>CURP: </strong>{{ persona.curp }}</li>
+                                <li><strong>Clave de Servidor Público: </strong>{{ persona.clavesp }}</li>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5 text-left text-dark">
+                                <li><strong>Número de Plaza: </strong>{{ persona.num_plaza }}</li>
+                                <li><strong>Puesto: </strong>{{ persona.puesto }}</li>
+                                <li><strong>Código de Puesto: </strong>{{ persona.puesto.codigo_puesto }}</li>
+                                <li><strong>Nivel Y Rango: </strong>{{ persona.puesto.nivel_rango }}</li>
+                                <li><strong>Sueldo Bruto: </strong>{{ persona.puesto.sueldo_bruto }}</li>
+                                <li><strong>Sueldo Neto: </strong>{{ persona.puesto.sueldo_neto }}</li>
+                            </div>
+                          
+                        </div>
+                          <br>
+                    </div>
+
+                    <div style="background-color: rgb(9, 20, 70);">
+                        <div class="row">
+                            <div class="col-md-6 text-center"><h5 class="ml-5 mt-1 text-white" >Domicilio</h5></div>
+                            <div class="col-md-6 text-center"><h5 class="ml-5 mt-1 text-white" >Contacto</h5></div>
+                        </div>
+                    </div>
+                    <div style="background-color: rgb(217, 222, 241);">
+                        <br>
+                        <div class="row align-items-center">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5 text-left text-dark">
+                                <li><strong>Calle </strong> {{persona.calle}}</li>
+                                <li><strong>Número: </strong> {{ persona.interior }}</li>
+                                <li><strong>Exterior: </strong> {{ persona.exterior }}</li>                
+                                <li><strong>Colonia: </strong>{{ persona.colonia }}</li>
+                                <li><strong>Municipio: </strong>{{ persona.municipio }}</li>
+                                <li><strong>Código Postal: </strong>{{ persona.cp }}</li>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5 text-left text-dark">
+                                <li><strong>Correo Electrónico </strong> {{persona.correo}}</li>
+                                <li><strong>Número Fijo: </strong> {{ persona.telefono_fijo }}</li>
+                                <li><strong>Número Móvil: </strong> {{ persona.telefono_movil }}</li>                
+                                <li><strong>Contacto Familiar: </strong>{{ persona.contacto_familiar }}</li>
+                                <li><strong>ISSEMYM: </strong>{{ persona.nss }}</li>
+                                <li><strong>Tipo de Sangre: </strong>{{ persona.tipo_sangre }}</li>
+                                <li><strong>Escolaridad: </strong>{{ persona.escolaridad }}</li>
+                            </div>
+                          
+                        </div>
+                          <br>
+                    </div>
+                    <div style="background-color: rgb(9, 20, 70);">
+                        <div class="row">
+                            <div class="col-md-6 text-center"><h5 class="ml-5 mt-1 text-white" >Adscripción Física</h5></div>
+                            <div class="col-md-6 text-center"><h5 class="ml-5 mt-1 text-white" >Observaciones</h5></div>
+                        </div>
+                    </div>
+                    <div style="background-color: rgb(217, 222, 241);">
+                        <br>
+                        <div class="row align-items-center">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5 text-left text-dark">
+                                <li><strong>Unidad Administrativa: </strong>{{ persona.unidad_administrativa }}</li>
+                                <li><strong>Adscripción: </strong>{{ persona.adscripcion }}</li>
+                                <li><strong>Dirección: </strong> {{ persona.direccion }}</li>
+                                <li><strong>Subdirección: </strong> {{ persona.subdireccion }}</li>
+                                <li><strong>Departamento: </strong> {{persona.departamento}}</li>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5 text-left text-dark">
+                                <li><strong>Observaciones: </strong>{{ persona.Observaciones}}</li>
+                                <li><strong>Fecha de Baja: </strong>{{ persona.fecha_baja }}</li>
+                                <li><strong>Motivo de Baja: </strong> {{ persona.motivo_baja }}</li>
+                            </div>
+                          
+                        </div>
+                        <br>
+                    </div>
+                    <div style="background-color: rgb(9, 20, 70);">
+                        <div class="row">
+                            <div class="col-md-12 text-center"><h5 class="ml-5 mt-1 text-white" >Cursos</h5></div>
+                        </div>
+                    </div>
+                    <div style="background-color: rgb(217, 222, 241);">
+                        <div class="row align-items-center">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5 text-center text-dark">
+                                <strong>Curso</strong>
+                            </div>
+                            <div class="col-md-6 text-center text-dark">
+                                <strong>Duración</strong>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row align-items-center">
+                            {% for curso in cursos %}
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5 text-left text-dark">
+                                    <li><strong>{{ curso.nombre}}</strong></li>
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5 text-left text-dark">
+                                    <li><strong> {{ curso.horas }} Horas</strong> </li>
+                                </div>
+                                
+                            {% endfor %}
+                            
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+{% endblock %} 
+
+<!-- It is {% now "jS F Y H:i" %} -->
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="/static/assets/js/setting-demo.js"></script>
+	<!--  <script src="/static/assets/js/demo.js"></script> -->
+
+	<script>
+		Circles.create({
+			id:'circles-1',
+			radius:45,
+			value:60,
+			maxValue:100,
+			width:7,
+			text: 5,
+			colors:['#f1f1f1', '#FF9E27'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		Circles.create({
+			id:'circles-2',
+			radius:45,
+			value:70,
+			maxValue:100,
+			width:7,
+			text: 36,
+			colors:['#f1f1f1', '#2BB930'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		Circles.create({
+			id:'circles-3',
+			radius:45,
+			value:40,
+			maxValue:100,
+			width:7,
+			text: 12,
+			colors:['#f1f1f1', '#F25961'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+
+		var mytotalIncomeChart = new Chart(totalIncomeChart, {
+			type: 'bar',
+			data: {
+				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+				datasets : [{
+					label: "Total Income",
+					backgroundColor: '#ff9e27',
+					borderColor: 'rgb(23, 125, 255)',
+					data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
+				}],
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					display: false,
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							display: false //this will remove only the label
+						},
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}],
+					xAxes : [ {
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}]
+				},
+			}
+		});
+
+		$('#lineChart').sparkline([105,103,123,100,95,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#ffa534',
+			fillColor: 'rgba(255, 165, 52, .14)'
+		});
+	</script>
+
+{% endblock javascripts %}

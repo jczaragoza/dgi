@@ -1,0 +1,112 @@
+		<!-- Sidebar -->
+		<div class="sidebar sidebar-style-2" data-background-color="dark2">	
+			<div class="sidebar-wrapper scrollbar scrollbar-inner">
+				<div class="sidebar-content">
+
+				{% if request.user.is_authenticated %}	
+					
+					<ul class="nav nav-primary">
+						<li class="nav-item {% if 'index' in segment %} active {% endif %}">
+							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+								<i class="fas fa-home"></i>
+								<p>Inicio</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="dashboard">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{% url 'index' %}" class="logo">
+											<span class="sub-item">Inicio</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+							<h4 class="text-section">COMPLEMENTOS</h4>
+						</li>
+						<li class="nav-item {% if 'ui-' in segment %} active {% endif %}">
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-layer-group"></i>
+								<p>Filtros</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="base">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{% url 'uiip' %}">
+											<span class="sub-item">Personal UIIP</span>
+										</a>
+									</li>
+									<li>
+										<a href="{% url 'c5' %}">
+											<span class="sub-item">Personal C5</span>
+										</a>
+									</li>
+									<li>
+										<a href="{% url 'uac' %}">
+											<span class="sub-item">Personal UAC</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item {% if 'layout' in segment %} active {% endif %}">
+							<a data-toggle="collapse" href="#sidebarLayouts">
+								<i class="fas fa-th-list"></i>
+								<p>Cursos</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="sidebarLayouts">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{% url 'curso_list' %}">
+											<span class="sub-item">Lista de cursos</span>
+										</a>
+									</li>
+									<li>
+										<a href="{% url 'curso_new' %}">
+											<span class="sub-item">Agregar Curso</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<!--
+						<li class="nav-item {% if 'maps' in segment %} active {% endif %}">
+							<a data-toggle="collapse" href="#maps">
+								<i class="fas fa-map-marker-alt"></i>
+								<p>Maps</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="maps">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="/maps-jqvmap.html">
+											<span class="sub-item">JQVMap</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						-->
+						
+					</ul>
+				{% else %}
+					<ul class="nav nav-primary">
+						<li class="mx-4 mt-2">
+                            <a target="_blank"
+                               href="" 
+                               class="btn btn-danger btn-block">
+                                <span class="btn-label mr-2"> <i class="fa fa-rocket"></i> </span></a> 
+						</li>
+					</ul>
+				{% endif %}	
+				</div>
+			</div>
+		</div>
+        <!-- End Sidebar -->
+        

@@ -1,0 +1,29 @@
+{% extends 'cursos/cursos_list.html' %}
+
+{% block columns %}
+    <tr>
+        <th scope="col" style="width: 25%;">Nombre del personal</th>
+        <th scope="col" style="width: 10%;">Tipo de Curso</th>
+        <th scope="col" style="width: 55%;">Nombre del curso</th>
+        <th scope="col" style="width: 10%;">Opciones</th>
+
+    </tr>
+{% endblock %}
+
+{% block rows %}
+    {% for c in object_list %}
+        <tr>
+            <td>{{ c.persona.nombre }} {{c.persona.apaterno}} {{c.persona.amaterno}}</td>
+            <td>{{ c.tipo_curso }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>
+                <button type="button" class="btn btn-warning btn-xs btn-flat">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button type="button" class="btn btn-danger btn-xs btn-flat">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% load static %}
+        <div class="row">
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body text-center text-center font-weight-bold">UIIPP</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <img src="{% static "img/user.png" %}" height="25" class="d-inline-block align-top rounded"/>
+                        <a class="small text-white stretched-link" href="#">Personal Adscrito ( {{object_list|length}}
+                            
+                        )</a>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-warning text-white mb-4">
+                    <div class="card-body text-center font-weight-bold">C5</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <img src="{% static "img/user.png" %}" height="25" class="d-inline-block align-top rounded"/>
+                        <a class="small text-white stretched-link" href="#">Personal Adscrito (35)</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-success text-white mb-4">
+                    <div class="card-body text-center font-weight-bold">UAC</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <img src="{% static "img/user.png" %}" height="25" class="d-inline-block align-top rounded"/>
+                        <a class="small text-white stretched-link" href="#">Personal Adscrito (35)</a>
+                    </div>
+                </div>
+            </div>
+        </div>

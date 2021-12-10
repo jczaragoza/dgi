@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+
+    <div class="content">
+		<div class="panel-header bg-primary-gradient">
+			<div class="page-inner py-5">
+				<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+					
+				</div>
+			</div>
+		</div>
+		
+		
+			<div class="row row-card-no-pd">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="card-head-row card-tools-still-right">
+								<h4 class="card-title">¿Seguro que desea eliminar el curso {{ object }}?</h4>
+							</div>
+							<p class="card-category">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form method="post">{% csrf_token %}
+                                                <input type="submit" value="Aceptar" class="btn btn-primary btn-round">
+                                                <a href="{{request.META.HTTP_REFERER}}" class="btn btn-danger btn-round">Cancelar</a>
+                                            </form>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+{% endblock %}
+
+ 
